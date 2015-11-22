@@ -19,6 +19,8 @@ namespace SNMPDeviceInfo
 
         public HostSettingsManager(string hostSsettingsFile)
         {
+            hostSettings = new List<SNMPHostSettings>();
+
             using (XmlReader reader = XmlReader.Create(hostSsettingsFile))
             {
                 reader.ReadStartElement("SNMPHostSettings");

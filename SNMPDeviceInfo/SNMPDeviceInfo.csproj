@@ -67,9 +67,7 @@
     <EmbeddedResource Include="FrmMainWindow.resx">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSNMPSettings.Designer.resx">
-      <DependentUpon>frmSNMPSettings.Designer.cs</DependentUpon>
-    </EmbeddedResource>
+
     <EmbeddedResource Include="frmSNMPSettings.resx">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </EmbeddedResource>
