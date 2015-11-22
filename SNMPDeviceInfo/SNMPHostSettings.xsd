@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="SNMPDeviceInfo"
+           xmlns="SNMPDeviceInfo"
+           elementFormDefault="qualified"
+           version="1.0.0">
+
+  <xs:element name="SNMPHostSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Host" type="HostSettingsType" minOccurs='0' maxOccurs='unbounded' />
+      </xs:sequence>
+      <xs:attribute name='FileFormatVersion' type='xs:positiveInteger' use='required'/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name='HostSettingsType'>
+    <xs:sequence>
+      <xs:element name="IpOrHostname" type="xs:string"/>
+      <xs:element name="SNMPVersion" type="SNMPVersionType"/>
+      <xs:choice>
+        <xs:element name="v12Settings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SNMPReadCommunity" type="xs:string"/>
+              <xs:element name="SNMPWriteCommunity" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="v3settings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="USMMode" type="USMModeType"/>
+              <xs:element name="SecurityName" type="xs:string"/>
+              <xs:element name="AuthProtocol" type="AuthProtocolType"/>
+              <xs:element name="AuthKey" type="xs:string"/>
+              <xs:element name="PrivProtocol" type="PrivProtocolType"/>
+              <xs:element name="PrivKey" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="mnemonic" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="USMModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoAuthNoPriv"/>
+      <xs:enumeration value="AuthNoPriv"/>
+      <xs:enumeration value="AuthPriv"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AuthProtocolType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MD5"/>
+      <xs:enumeration value="SHA1"/>
+      <xs:enumeration value="SHA2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrivProtocolType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DES"/>
+      <xs:enumeration value="AES128"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SNMPVersionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="v1"/>
+      <xs:enumeration value="v2c"/>
+      <xs:enumeration value="v3"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

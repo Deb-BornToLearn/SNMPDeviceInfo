@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabRoutingTable = new System.Windows.Forms.TabPage();
-            this.tabARPTable = new System.Windows.Forms.TabPage();
             this.tabIfInfo = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IfIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IfDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +38,13 @@
             this.IfSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IfPhysAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IfAdminStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabRoutingTable = new System.Windows.Forms.TabPage();
+            this.tabARPTable = new System.Windows.Forms.TabPage();
+            this.cmbDevices = new System.Windows.Forms.ComboBox();
+            this.btnNewDevice = new System.Windows.Forms.Button();
+            this.btnConnectTelnet = new System.Windows.Forms.Button();
+            this.btnConnectSSH = new System.Windows.Forms.Button();
+            this.btnManageDevices = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabIfInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -60,26 +61,6 @@
             this.tabControl1.Size = new System.Drawing.Size(761, 395);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabRoutingTable
-            // 
-            this.tabRoutingTable.Location = new System.Drawing.Point(4, 22);
-            this.tabRoutingTable.Name = "tabRoutingTable";
-            this.tabRoutingTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRoutingTable.Size = new System.Drawing.Size(753, 369);
-            this.tabRoutingTable.TabIndex = 0;
-            this.tabRoutingTable.Text = "ARP Table";
-            this.tabRoutingTable.UseVisualStyleBackColor = true;
-            // 
-            // tabARPTable
-            // 
-            this.tabARPTable.Location = new System.Drawing.Point(4, 22);
-            this.tabARPTable.Name = "tabARPTable";
-            this.tabARPTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabARPTable.Size = new System.Drawing.Size(753, 369);
-            this.tabARPTable.TabIndex = 1;
-            this.tabARPTable.Text = "Routing Table";
-            this.tabARPTable.UseVisualStyleBackColor = true;
-            // 
             // tabIfInfo
             // 
             this.tabIfInfo.Controls.Add(this.dataGridView1);
@@ -90,42 +71,6 @@
             this.tabIfInfo.TabIndex = 2;
             this.tabIfInfo.Text = "Interface Info";
             this.tabIfInfo.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(204, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(224, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 21);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "New Device";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(584, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 21);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Telnet";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(673, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 21);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "SSH";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -189,15 +134,80 @@
             this.IfAdminStatus.Name = "IfAdminStatus";
             this.IfAdminStatus.ReadOnly = true;
             // 
+            // tabRoutingTable
+            // 
+            this.tabRoutingTable.Location = new System.Drawing.Point(4, 22);
+            this.tabRoutingTable.Name = "tabRoutingTable";
+            this.tabRoutingTable.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRoutingTable.Size = new System.Drawing.Size(753, 369);
+            this.tabRoutingTable.TabIndex = 0;
+            this.tabRoutingTable.Text = "ARP Table";
+            this.tabRoutingTable.UseVisualStyleBackColor = true;
+            // 
+            // tabARPTable
+            // 
+            this.tabARPTable.Location = new System.Drawing.Point(4, 22);
+            this.tabARPTable.Name = "tabARPTable";
+            this.tabARPTable.Padding = new System.Windows.Forms.Padding(3);
+            this.tabARPTable.Size = new System.Drawing.Size(753, 369);
+            this.tabARPTable.TabIndex = 1;
+            this.tabARPTable.Text = "Routing Table";
+            this.tabARPTable.UseVisualStyleBackColor = true;
+            // 
+            // cmbDevices
+            // 
+            this.cmbDevices.FormattingEnabled = true;
+            this.cmbDevices.Location = new System.Drawing.Point(6, 12);
+            this.cmbDevices.Name = "cmbDevices";
+            this.cmbDevices.Size = new System.Drawing.Size(204, 21);
+            this.cmbDevices.TabIndex = 1;
+            // 
+            // btnNewDevice
+            // 
+            this.btnNewDevice.Location = new System.Drawing.Point(224, 12);
+            this.btnNewDevice.Name = "btnNewDevice";
+            this.btnNewDevice.Size = new System.Drawing.Size(83, 21);
+            this.btnNewDevice.TabIndex = 2;
+            this.btnNewDevice.Text = "New Device";
+            this.btnNewDevice.UseVisualStyleBackColor = true;
+            // 
+            // btnConnectTelnet
+            // 
+            this.btnConnectTelnet.Location = new System.Drawing.Point(584, 11);
+            this.btnConnectTelnet.Name = "btnConnectTelnet";
+            this.btnConnectTelnet.Size = new System.Drawing.Size(83, 21);
+            this.btnConnectTelnet.TabIndex = 3;
+            this.btnConnectTelnet.Text = "Telnet";
+            this.btnConnectTelnet.UseVisualStyleBackColor = true;
+            // 
+            // btnConnectSSH
+            // 
+            this.btnConnectSSH.Location = new System.Drawing.Point(673, 11);
+            this.btnConnectSSH.Name = "btnConnectSSH";
+            this.btnConnectSSH.Size = new System.Drawing.Size(83, 21);
+            this.btnConnectSSH.TabIndex = 4;
+            this.btnConnectSSH.Text = "SSH";
+            this.btnConnectSSH.UseVisualStyleBackColor = true;
+            // 
+            // btnManageDevices
+            // 
+            this.btnManageDevices.Location = new System.Drawing.Point(313, 12);
+            this.btnManageDevices.Name = "btnManageDevices";
+            this.btnManageDevices.Size = new System.Drawing.Size(104, 21);
+            this.btnManageDevices.TabIndex = 5;
+            this.btnManageDevices.Text = "Manage Devices";
+            this.btnManageDevices.UseVisualStyleBackColor = true;
+            // 
             // frmMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnManageDevices);
+            this.Controls.Add(this.btnConnectSSH);
+            this.Controls.Add(this.btnConnectTelnet);
+            this.Controls.Add(this.btnNewDevice);
+            this.Controls.Add(this.cmbDevices);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmMainWindow";
             this.Text = "SNMP Device Info";
@@ -214,10 +224,10 @@
         private System.Windows.Forms.TabPage tabIfInfo;
         private System.Windows.Forms.TabPage tabRoutingTable;
         private System.Windows.Forms.TabPage tabARPTable;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbDevices;
+        private System.Windows.Forms.Button btnNewDevice;
+        private System.Windows.Forms.Button btnConnectTelnet;
+        private System.Windows.Forms.Button btnConnectSSH;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfDesc;
@@ -226,6 +236,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IfSpeed;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfPhysAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfAdminStatus;
+        private System.Windows.Forms.Button btnManageDevices;
     }
 }
 

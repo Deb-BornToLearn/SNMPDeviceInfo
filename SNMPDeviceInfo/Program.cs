@@ -16,7 +16,10 @@ namespace SNMPDeviceInfo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMainWindow());
+
+            HostSettingsManager hsm = new HostSettingsManager("hostsettings.xml");
+
+            Application.Run(new frmMainWindow(hsm));
         }
     }
 }

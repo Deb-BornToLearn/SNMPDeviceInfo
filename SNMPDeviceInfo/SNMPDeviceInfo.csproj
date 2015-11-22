@@ -58,10 +58,17 @@
     <Compile Include="frmSNMPSettings.Designer.cs">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="HostSettingsManager.cs" />
+    <Compile Include="ISNMPHostSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SNMPConstants.cs" />
+    <Compile Include="SNMPHostSettings.cs" />
     <EmbeddedResource Include="FrmMainWindow.resx">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSNMPSettings.Designer.resx">
+      <DependentUpon>frmSNMPSettings.Designer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSNMPSettings.resx">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
