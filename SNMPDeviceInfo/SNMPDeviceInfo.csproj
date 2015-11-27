@@ -67,7 +67,6 @@
     <EmbeddedResource Include="FrmMainWindow.resx">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="frmSNMPSettings.resx">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hostsettings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

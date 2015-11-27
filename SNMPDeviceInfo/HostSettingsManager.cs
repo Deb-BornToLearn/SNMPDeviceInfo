@@ -4,10 +4,12 @@ using System.Collections.Specialized;
 using System.Xml;
 using System.Xml.Linq;
 using System;
+using System.Linq;
+using System.Collections;
 
 namespace SNMPDeviceInfo
 {
-    public class HostSettingsManager : IEnumerable<ISNMPHostSettings>, INotifyPropertyChanged, INotifyCollectionChanged
+    public class HostSettingsManager : IEnumerable<ISNMPHostSettings>, INotifyPropertyChanged, INotifyCollectionChanged, IListSource
     {
         Dictionary<string, SNMPHostSettings> hostSettings;
 
@@ -101,6 +103,19 @@ namespace SNMPDeviceInfo
 
                 reader.ReadEndElement();
             }
+        }
+
+        bool IListSource.ContainsListCollection
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        IList IListSource.GetList()
+        {
+            return hostSettings.Values.ToList<ISNMPHostSettings>();
         }
     }
 }
