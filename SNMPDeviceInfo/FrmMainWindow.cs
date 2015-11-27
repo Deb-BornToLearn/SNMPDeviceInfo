@@ -12,7 +12,7 @@ namespace SNMPDeviceInfo
 {
     public partial class frmMainWindow : Form
     {
-        HostSettingsManager _hsm;
+        public HostSettingsManager _hsm;
 
         public frmMainWindow(HostSettingsManager hsm)
         {

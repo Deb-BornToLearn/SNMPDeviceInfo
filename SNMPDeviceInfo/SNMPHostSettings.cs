@@ -19,6 +19,10 @@ namespace SNMPDeviceInfo
         
         public SNMPConstants.v3EncryptionMode SnmpV3EncryptionMode { get; set; }
 
+        public SNMPHostSettings()
+        {
+
+        }
 
         public static SNMPHostSettings fromXElement(XElement el)
         {
@@ -54,18 +58,25 @@ namespace SNMPDeviceInfo
             }
             else //SNMPConstants.SNMPVersion.v1 or v2c
             {
-                string read = el.Element("SNMPReadCommunity").Value;
-                string write = el.Element("SNMPWriteCommunity").Value;
-
-                if (String.IsNullOrEmpty(read) == false)
-                    hs.ReadCommunity = read;
-                else
-                    hs.ReadCommunity = "";
-
-                if (String.IsNullOrEmpty(write) == false)
-                    hs.WriteCommunity = write;
-                else
-                    hs.WriteCommunity = "";
+                XElement v12 = el.Element("v12Settings");
+                XElement v12Read = v12.Element("ReadCommunity");
+                if (v12Read != null)
+                {
+                    string read = v12Read.Value;
+                    if (String.IsNullOrEmpty(read) == false)
+                        hs.ReadCommunity = read;
+                    else
+                        hs.ReadCommunity = "";
+                }
+                XElement v12Write = v12.Element("WriteCommunity");
+                if (v12Write != null)
+                {
+                    string write = v12Write.Value;
+                    if (String.IsNullOrEmpty(write) == false)
+                        hs.WriteCommunity = write;
+                    else
+                        hs.WriteCommunity = "";
+                }                
             }
 
             return hs;
