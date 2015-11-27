@@ -67,7 +67,6 @@
     <EmbeddedResource Include="FrmMainWindow.resx">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="frmSNMPSettings.resx">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +79,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="HostSettingsManager.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

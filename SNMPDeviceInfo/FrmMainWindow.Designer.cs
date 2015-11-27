@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabIfInfo = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -45,9 +46,11 @@
             this.btnConnectTelnet = new System.Windows.Forms.Button();
             this.btnConnectSSH = new System.Windows.Forms.Button();
             this.btnManageDevices = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabIfInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -214,6 +217,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabIfInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +241,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IfPhysAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfAdminStatus;
         private System.Windows.Forms.Button btnManageDevices;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

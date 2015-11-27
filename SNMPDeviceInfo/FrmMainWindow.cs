@@ -18,6 +18,8 @@ namespace SNMPDeviceInfo
         {
             InitializeComponent();
             _hsm = hsm;
+
+            cmbDevices.DataSource = _hsm;
         }
     }
 }
