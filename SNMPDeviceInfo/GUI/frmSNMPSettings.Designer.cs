@@ -1,4 +1,4 @@
-﻿namespace SNMPDeviceInfo
+﻿namespace SNMPDeviceInfo.GUI
 {
     partial class frmSNMPSettings
     {
@@ -51,13 +51,13 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIpOrHostname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSaveAndClose = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtDisplayName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -308,12 +308,12 @@
             this.radioButton4.Text = "NoAuth NoPriv";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtIpOrHostname
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtIpOrHostname.Location = new System.Drawing.Point(74, 19);
+            this.txtIpOrHostname.Name = "txtIpOrHostname";
+            this.txtIpOrHostname.Size = new System.Drawing.Size(152, 20);
+            this.txtIpOrHostname.TabIndex = 7;
             // 
             // label3
             // 
@@ -324,23 +324,25 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "IP Address";
             // 
-            // button1
+            // btnSaveAndClose
             // 
-            this.button1.Location = new System.Drawing.Point(249, 426);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 26);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Save and Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSaveAndClose.Location = new System.Drawing.Point(249, 426);
+            this.btnSaveAndClose.Name = "btnSaveAndClose";
+            this.btnSaveAndClose.Size = new System.Drawing.Size(91, 26);
+            this.btnSaveAndClose.TabIndex = 9;
+            this.btnSaveAndClose.Text = "Save and Close";
+            this.btnSaveAndClose.UseVisualStyleBackColor = true;
+            this.btnSaveAndClose.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(381, 426);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 26);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(381, 426);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(81, 26);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // button3
             // 
@@ -361,12 +363,12 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Save as";
             // 
-            // textBox4
+            // txtDisplayName
             // 
-            this.textBox4.Location = new System.Drawing.Point(298, 19);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(152, 20);
-            this.textBox4.TabIndex = 12;
+            this.txtDisplayName.Location = new System.Drawing.Point(298, 19);
+            this.txtDisplayName.Name = "txtDisplayName";
+            this.txtDisplayName.Size = new System.Drawing.Size(152, 20);
+            this.txtDisplayName.TabIndex = 12;
             // 
             // frmSNMPSettings
             // 
@@ -374,12 +376,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 461);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtDisplayName);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSaveAndClose);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIpOrHostname);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -427,12 +429,12 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIpOrHostname;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSaveAndClose;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDisplayName;
         private System.Windows.Forms.Button button3;
     }
 }

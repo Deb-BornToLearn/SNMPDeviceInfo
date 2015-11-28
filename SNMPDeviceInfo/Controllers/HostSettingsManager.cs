@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Collections;
 
-namespace SNMPDeviceInfo
+namespace SNMPDeviceInfo.Controllers
 {
     public class HostSettingsManager : IEnumerable<ISNMPHostSettings>, INotifyPropertyChanged, INotifyCollectionChanged, IListSource
     {
@@ -77,7 +77,8 @@ namespace SNMPDeviceInfo
 
         private void NotifyCollectionChanged(NotifyCollectionChangedAction a)
         {
-            CollectionChanged(this, new NotifyCollectionChangedEventArgs(a));
+            if(CollectionChanged != null)
+                CollectionChanged(this, new NotifyCollectionChangedEventArgs(a));
         }
 
         #endregion Implement INotifyCollectionChanged

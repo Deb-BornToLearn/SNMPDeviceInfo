@@ -1,4 +1,4 @@
-﻿namespace SNMPDeviceInfo
+﻿namespace SNMPDeviceInfo.GUI
 {
     partial class frmMainWindow
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbfResults = new System.Windows.Forms.TabControl();
             this.tabIfInfo = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IfIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,21 +45,22 @@
             this.btnConnectTelnet = new System.Windows.Forms.Button();
             this.btnConnectSSH = new System.Windows.Forms.Button();
             this.btnManageDevices = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.tbfResults.SuspendLayout();
             this.tabIfInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tbfResults
             // 
-            this.tabControl1.Controls.Add(this.tabIfInfo);
-            this.tabControl1.Controls.Add(this.tabRoutingTable);
-            this.tabControl1.Controls.Add(this.tabARPTable);
-            this.tabControl1.Location = new System.Drawing.Point(2, 43);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(761, 395);
-            this.tabControl1.TabIndex = 0;
+            this.tbfResults.Controls.Add(this.tabIfInfo);
+            this.tbfResults.Controls.Add(this.tabARPTable);
+            this.tbfResults.Controls.Add(this.tabRoutingTable);
+            this.tbfResults.Location = new System.Drawing.Point(2, 43);
+            this.tbfResults.Name = "tbfResults";
+            this.tbfResults.SelectedIndex = 0;
+            this.tbfResults.Size = new System.Drawing.Size(761, 395);
+            this.tbfResults.TabIndex = 0;
             // 
             // tabIfInfo
             // 
@@ -141,7 +142,7 @@
             this.tabRoutingTable.Padding = new System.Windows.Forms.Padding(3);
             this.tabRoutingTable.Size = new System.Drawing.Size(753, 369);
             this.tabRoutingTable.TabIndex = 0;
-            this.tabRoutingTable.Text = "ARP Table";
+            this.tabRoutingTable.Text = "Routing Table";
             this.tabRoutingTable.UseVisualStyleBackColor = true;
             // 
             // tabARPTable
@@ -151,7 +152,7 @@
             this.tabARPTable.Padding = new System.Windows.Forms.Padding(3);
             this.tabARPTable.Size = new System.Drawing.Size(753, 369);
             this.tabARPTable.TabIndex = 1;
-            this.tabARPTable.Text = "Routing Table";
+            this.tabARPTable.Text = "ARP Table";
             this.tabARPTable.UseVisualStyleBackColor = true;
             // 
             // cmbDevices
@@ -170,6 +171,7 @@
             this.btnNewDevice.TabIndex = 2;
             this.btnNewDevice.Text = "New Device";
             this.btnNewDevice.UseVisualStyleBackColor = true;
+            this.btnNewDevice.Click += new System.EventHandler(this.btnNewDevice_Click);
             // 
             // btnConnectTelnet
             // 
@@ -198,20 +200,30 @@
             this.btnManageDevices.Text = "Manage Devices";
             this.btnManageDevices.UseVisualStyleBackColor = true;
             // 
+            // btnOptions
+            // 
+            this.btnOptions.Location = new System.Drawing.Point(463, 11);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(83, 21);
+            this.btnOptions.TabIndex = 6;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            // 
             // frmMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 450);
+            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnManageDevices);
             this.Controls.Add(this.btnConnectSSH);
             this.Controls.Add(this.btnConnectTelnet);
             this.Controls.Add(this.btnNewDevice);
             this.Controls.Add(this.cmbDevices);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbfResults);
             this.Name = "frmMainWindow";
             this.Text = "SNMP Device Info";
-            this.tabControl1.ResumeLayout(false);
+            this.tbfResults.ResumeLayout(false);
             this.tabIfInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -220,7 +232,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbfResults;
         private System.Windows.Forms.TabPage tabIfInfo;
         private System.Windows.Forms.TabPage tabRoutingTable;
         private System.Windows.Forms.TabPage tabARPTable;
@@ -237,6 +249,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IfPhysAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn IfAdminStatus;
         private System.Windows.Forms.Button btnManageDevices;
+        private System.Windows.Forms.Button btnOptions;
     }
 }
 

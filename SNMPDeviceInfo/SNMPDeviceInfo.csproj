@@ -46,28 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmMainWindow.cs">
+    <Compile Include="Controllers\SNMPSessionManager.cs" />
+    <Compile Include="GUI\FrmMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMainWindow.Designer.cs">
+    <Compile Include="GUI\FrmMainWindow.Designer.cs">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSNMPSettings.cs">
+    <Compile Include="GUI\frmSNMPSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSNMPSettings.Designer.cs">
+    <Compile Include="GUI\frmSNMPSettings.Designer.cs">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="HostSettingsManager.cs" />
+    <Compile Include="Controllers\HostSettingsManager.cs" />
     <Compile Include="ISNMPHostSettings.cs" />
+    <Compile Include="ISNMPResult.cs" />
+    <Compile Include="ISNMPTable.cs" />
+    <Compile Include="ISNMPSessionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SNMPConstants.cs" />
     <Compile Include="SNMPHostSettings.cs" />
-    <EmbeddedResource Include="FrmMainWindow.resx">
+    <EmbeddedResource Include="GUI\FrmMainWindow.resx">
       <DependentUpon>FrmMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSNMPSettings.resx">
+    <EmbeddedResource Include="GUI\frmSNMPSettings.resx">
       <DependentUpon>frmSNMPSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
