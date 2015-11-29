@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<SNMPHostSettings
+FileFormatVersion="1.0.0">
+
+  <Host id="1234567890" mnemonic="Test Vulcan">
+    <IpOrHostname>127.0.0.1</IpOrHostname>
+    <SNMPVersion>v2c</SNMPVersion>
+    <v12Settings>
+      <ReadCommunity>airli</ReadCommunity>
+    </v12Settings>
+  </Host>
+
+  <Host id="987654321" mnemonic="Test 2">
+    <IpOrHostname>172.26.14.5</IpOrHostname>
+    <SNMPVersion>v2c</SNMPVersion>
+    <v12Settings>
+      <ReadCommunity>airli</ReadCommunity>
+    </v12Settings>
+  </Host>
+
+</SNMPHostSettings>
