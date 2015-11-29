@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SNMPDeviceInfo.Controllers;
 
-namespace SNMPDeviceInfo
+namespace SNMPDeviceInfo.GUI
 {
     public partial class frmMainWindow : Form
     {
@@ -19,7 +20,17 @@ namespace SNMPDeviceInfo
             InitializeComponent();
             _hsm = hsm;
 
+            cmbDevices.DisplayMember = "DisplayName";
+            cmbDevices.ValueMember = "Id";
             cmbDevices.DataSource = _hsm;
+            
+
+        }
+
+        private void btnNewDevice_Click(object sender, EventArgs e)
+        {
+            frmSNMPSettings formSettings = new frmSNMPSettings(_hsm);
+            formSettings.ShowDialog();
         }
     }
 }

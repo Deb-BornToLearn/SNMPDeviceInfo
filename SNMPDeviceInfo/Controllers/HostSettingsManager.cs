@@ -7,9 +7,9 @@ using System;
 using System.Linq;
 using System.Collections;
 
-namespace SNMPDeviceInfo
+namespace SNMPDeviceInfo.Controllers
 {
-    public class HostSettingsManager :  IListSource
+    public class HostSettingsManager : IEnumerable<ISNMPHostSettings>, INotifyPropertyChanged, INotifyCollectionChanged, IListSource
     {
         Dictionary<string, SNMPHostSettings> hostSettings;
 
@@ -52,6 +52,11 @@ namespace SNMPDeviceInfo
             return hostSettings.Values.GetEnumerator();
         }
 
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return hostSettings.Values.GetEnumerator();
+        }
+
         #endregion Implement IEnumerable<ISNMPHostSettings>
 
         #region Implement INotifyPropertyChanged
@@ -72,7 +77,8 @@ namespace SNMPDeviceInfo
 
         private void NotifyCollectionChanged(NotifyCollectionChangedAction a)
         {
-            CollectionChanged(this, new NotifyCollectionChangedEventArgs(a));
+            if(CollectionChanged != null)
+                CollectionChanged(this, new NotifyCollectionChangedEventArgs(a));
         }
 
         #endregion Implement INotifyCollectionChanged
@@ -97,12 +103,8 @@ namespace SNMPDeviceInfo
                 }
 
                 reader.ReadEndElement();
-
-                NotifyCollectionChanged(NotifyCollectionChangedAction.Reset);
             }
         }
-
-        #region Implement IListSource
 
         bool IListSource.ContainsListCollection
         {
@@ -116,7 +118,5 @@ namespace SNMPDeviceInfo
         {
             return hostSettings.Values.ToList<ISNMPHostSettings>();
         }
-
-        #endregion Implement IListSource
     }
 }

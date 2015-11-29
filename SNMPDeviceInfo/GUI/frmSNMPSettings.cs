@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SNMPDeviceInfo.Controllers;
 
-namespace SNMPDeviceInfo
+namespace SNMPDeviceInfo.GUI
 {
     public partial class frmSNMPSettings : Form
     {
-        public frmSNMPSettings()
+
+        HostSettingsManager _hsm;
+
+        public frmSNMPSettings(HostSettingsManager hsm)
         {
+            _hsm = hsm;
             InitializeComponent();
         }
 
@@ -30,6 +35,17 @@ namespace SNMPDeviceInfo
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _hsm.Addv12Settings(SNMPConstants.SNMPVersion.v2c, txtIpOrHostname.Text, txtDisplayName.Text, txtReadCommunity.Text, txtWriteCommunity.Text);
+            DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
