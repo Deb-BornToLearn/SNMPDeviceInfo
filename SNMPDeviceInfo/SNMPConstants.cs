@@ -16,5 +16,17 @@ namespace SNMPDeviceInfo
             AuthNoPriv,
             AuthPriv
         }
+
+        public enum v3AuthMode
+        {
+            MD5 = 0,
+            SHA1
+        }
+
+        public enum v3PrivMode
+        {
+            DES = 0,
+            AES
+        }
     }
 }

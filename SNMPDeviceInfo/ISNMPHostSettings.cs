@@ -12,7 +12,12 @@ namespace SNMPDeviceInfo
 
         SNMPConstants.v3EncryptionMode SnmpV3EncryptionMode { get; set; }
 
+        SNMPConstants.v3AuthMode SnmpV3AuthMode {get; set;}
+
+        SNMPConstants.v3PrivMode SnmpV3PrivMode { get; set; }
+
         string ReadCommunity { get; set; }
+
         string WriteCommunity { get; set; }
 
         string IpOrHostname { get; set; }

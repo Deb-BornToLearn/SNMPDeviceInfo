@@ -9,20 +9,23 @@ using System.Collections;
 
 namespace SNMPDeviceInfo.Controllers
 {
-    public class HostSettingsManager : IEnumerable<ISNMPHostSettings>, INotifyPropertyChanged, INotifyCollectionChanged, IListSource
+    public class HostSettingsManager : IListSource
     {
-        Dictionary<string, SNMPHostSettings> hostSettings;
+        #region Members
+        private BindingList<SNMPHostSettings> hostSettings;
+
+        #endregion Members
 
         #region Constructors
 
         public HostSettingsManager()
         {
-
+            hostSettings = new BindingList<SNMPHostSettings>();
         }
 
         public HostSettingsManager(string hostSettingsFile)
         {
-            hostSettings = new Dictionary<string, SNMPHostSettings>();
+            hostSettings = new BindingList<SNMPHostSettings>();
             LoadSettingsFromXMLFile(hostSettingsFile);
         }
 
@@ -38,51 +41,26 @@ namespace SNMPDeviceInfo.Controllers
             hs.WriteCommunity = writeCommunity;
             string id = Guid.NewGuid().ToString();
 
-            hostSettings.Add(id, hs);
-
-            NotifyCollectionChanged(NotifyCollectionChangedAction.Add);
+            hostSettings.Add(hs);
 
             return hs;
         }
 
-        #region Implement IEnumerable<ISNMPHostSettings>
-
-        public IEnumerator<ISNMPHostSettings> GetEnumerator()
+        public ISNMPHostSettings Addv3Settings(string ipOrHostname, string dispName, SNMPConstants.v3EncryptionMode USMmode, SNMPConstants.v3AuthMode authMode, string authKey, SNMPConstants.v3PrivMode privMode, string privKey)
         {
-            return hostSettings.Values.GetEnumerator();
+            SNMPHostSettings hs = new SNMPHostSettings();
+
+            hs.IpOrHostname = ipOrHostname;
+            hs.SnmpVersion = SNMPConstants.SNMPVersion.v3;
+            hs.DisplayName = dispName;
+            hs.SnmpV3EncryptionMode = USMmode;
+            hs.SnmpV3AuthMode = authMode;
+            hs.SnmpV3PrivMode = privMode;
+
+            hostSettings.Add(hs);
+
+            return hs;
         }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return hostSettings.Values.GetEnumerator();
-        }
-
-        #endregion Implement IEnumerable<ISNMPHostSettings>
-
-        #region Implement INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion Implement INotifyPropertyChanged
-
-        #region Implement INotifyCollectionChanged
-
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
-        private void NotifyCollectionChanged(NotifyCollectionChangedAction a)
-        {
-            if(CollectionChanged != null)
-                CollectionChanged(this, new NotifyCollectionChangedEventArgs(a));
-        }
-
-        #endregion Implement INotifyCollectionChanged
-
 
         public void LoadSettingsFromXMLFile(string hostSettingsFile)
         {
@@ -99,24 +77,24 @@ namespace SNMPDeviceInfo.Controllers
                 {
                     XElement el = (XElement)XNode.ReadFrom(reader);
                     SNMPHostSettings hs = SNMPHostSettings.fromXElement(el);
-                    hostSettings[hs.Id] = hs;
+                    hostSettings.Add(hs);
                 }
 
                 reader.ReadEndElement();
             }
         }
 
-        bool IListSource.ContainsListCollection
+        public IList GetList()
+        {
+            return hostSettings;
+        }
+
+        public bool ContainsListCollection
         {
             get
             {
-                return true;
+                return false;
             }
-        }
-
-        IList IListSource.GetList()
-        {
-            return hostSettings.Values.ToList<ISNMPHostSettings>();
         }
     }
 }

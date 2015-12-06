@@ -27,25 +27,42 @@ namespace SNMPDeviceInfo.GUI
 
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void btnSaveAndClose_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _hsm.Addv12Settings(SNMPConstants.SNMPVersion.v2c, txtIpOrHostname.Text, txtDisplayName.Text, txtReadCommunity.Text, txtWriteCommunity.Text);
-            DialogResult = DialogResult.OK;
+            if(ValidateTextNotEmpty(txtDisplayName))
+            {
+                _hsm.Addv12Settings(SNMPConstants.SNMPVersion.v2c, txtIpOrHostname.Text, txtDisplayName.Text, txtReadCommunity.Text, txtWriteCommunity.Text);
+                DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private bool ValidateTextNotEmpty(TextBox c)
+        {
+            if(String.IsNullOrEmpty(c.Text))
+            {
+                errProvSNMPSettings.SetError(c, "Value may not be empty.");
+                return false;
+            }
+            else
+            {
+                errProvSNMPSettings.SetError(c, "");
+                return true;
+            }
+        }
+
+        private bool ValidateFormContents()
+        {
+            return this.ValidateChildren(ValidationConstraints.ImmediateChildren);
+        }
+
+        private void txtIpOrHostname_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateTextNotEmpty(txtIpOrHostname);
         }
     }
 }

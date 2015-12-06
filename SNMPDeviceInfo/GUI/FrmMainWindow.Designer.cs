@@ -38,8 +38,8 @@
             this.IfSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IfPhysAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IfAdminStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabRoutingTable = new System.Windows.Forms.TabPage();
             this.tabARPTable = new System.Windows.Forms.TabPage();
+            this.tabRoutingTable = new System.Windows.Forms.TabPage();
             this.cmbDevices = new System.Windows.Forms.ComboBox();
             this.btnNewDevice = new System.Windows.Forms.Button();
             this.btnConnectTelnet = new System.Windows.Forms.Button();
@@ -135,16 +135,6 @@
             this.IfAdminStatus.Name = "IfAdminStatus";
             this.IfAdminStatus.ReadOnly = true;
             // 
-            // tabRoutingTable
-            // 
-            this.tabRoutingTable.Location = new System.Drawing.Point(4, 22);
-            this.tabRoutingTable.Name = "tabRoutingTable";
-            this.tabRoutingTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRoutingTable.Size = new System.Drawing.Size(753, 369);
-            this.tabRoutingTable.TabIndex = 0;
-            this.tabRoutingTable.Text = "Routing Table";
-            this.tabRoutingTable.UseVisualStyleBackColor = true;
-            // 
             // tabARPTable
             // 
             this.tabARPTable.Location = new System.Drawing.Point(4, 22);
@@ -154,6 +144,16 @@
             this.tabARPTable.TabIndex = 1;
             this.tabARPTable.Text = "ARP Table";
             this.tabARPTable.UseVisualStyleBackColor = true;
+            // 
+            // tabRoutingTable
+            // 
+            this.tabRoutingTable.Location = new System.Drawing.Point(4, 22);
+            this.tabRoutingTable.Name = "tabRoutingTable";
+            this.tabRoutingTable.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRoutingTable.Size = new System.Drawing.Size(753, 369);
+            this.tabRoutingTable.TabIndex = 0;
+            this.tabRoutingTable.Text = "Routing Table";
+            this.tabRoutingTable.UseVisualStyleBackColor = true;
             // 
             // cmbDevices
             // 
@@ -199,6 +199,7 @@
             this.btnManageDevices.TabIndex = 5;
             this.btnManageDevices.Text = "Manage Devices";
             this.btnManageDevices.UseVisualStyleBackColor = true;
+            this.btnManageDevices.Click += new System.EventHandler(this.btnManageDevices_Click);
             // 
             // btnOptions
             // 

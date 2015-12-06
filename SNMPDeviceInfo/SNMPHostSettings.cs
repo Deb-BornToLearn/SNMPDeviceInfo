@@ -19,6 +19,10 @@ namespace SNMPDeviceInfo
         
         public SNMPConstants.v3EncryptionMode SnmpV3EncryptionMode { get; set; }
 
+        public SNMPConstants.v3AuthMode SnmpV3AuthMode { get; set; }
+
+        public SNMPConstants.v3PrivMode SnmpV3PrivMode { get; set; }
+
         public SNMPHostSettings()
         {
 

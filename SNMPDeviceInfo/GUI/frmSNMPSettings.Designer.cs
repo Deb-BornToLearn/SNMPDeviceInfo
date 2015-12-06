@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -58,12 +59,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.errProvSNMPSettings = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvSNMPSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -77,7 +80,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SNMP Version";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // radioButton3
             // 
@@ -123,7 +125,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "v1 / 2 Settings";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label2
             // 
@@ -317,6 +318,7 @@
             this.txtIpOrHostname.Name = "txtIpOrHostname";
             this.txtIpOrHostname.Size = new System.Drawing.Size(152, 20);
             this.txtIpOrHostname.TabIndex = 7;
+            this.txtIpOrHostname.Validating += new System.ComponentModel.CancelEventHandler(this.txtIpOrHostname_Validating);
             // 
             // label3
             // 
@@ -335,7 +337,7 @@
             this.btnSaveAndClose.TabIndex = 9;
             this.btnSaveAndClose.Text = "Save and Close";
             this.btnSaveAndClose.UseVisualStyleBackColor = true;
-            this.btnSaveAndClose.Click += new System.EventHandler(this.button1_Click);
+            this.btnSaveAndClose.Click += new System.EventHandler(this.btnSaveAndClose_Click);
             // 
             // btnCancel
             // 
@@ -373,6 +375,10 @@
             this.txtDisplayName.Size = new System.Drawing.Size(152, 20);
             this.txtDisplayName.TabIndex = 12;
             // 
+            // errProvSNMPSettings
+            // 
+            this.errProvSNMPSettings.ContainerControl = this;
+            // 
             // frmSNMPSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +411,7 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvSNMPSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,5 +449,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDisplayName;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ErrorProvider errProvSNMPSettings;
     }
 }
