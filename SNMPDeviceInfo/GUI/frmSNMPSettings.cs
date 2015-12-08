@@ -62,7 +62,9 @@ namespace SNMPDeviceInfo.GUI
 
         private void txtIpOrHostname_Validating(object sender, CancelEventArgs e)
         {
-            ValidateTextNotEmpty(txtIpOrHostname);
+            if(!(ValidateTextNotEmpty(txtIpOrHostname))) {
+                e.Cancel = true;
+            }
         }
     }
 }
